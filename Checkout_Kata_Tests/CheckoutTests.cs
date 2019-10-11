@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Checkout_Kata;
 using Xunit;
 
@@ -50,6 +51,21 @@ namespace Checkout_Kata_Tests
             var expected = 0M;
             // Act
             _sut.Scan(sku);
+            var result = _sut.GetTotal();
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(1, "A99", "A99")]
+        [InlineData(0.8, "B15", "A99")]
+        [InlineData(1.3, "B15", "A99", "A99")]
+        [InlineData(1.2, "C40", "C40")]
+        public void When_Multiple_Items_Are_Scanned_Without_Special_Offers_Applied_Total_Should_Be_As_Expected(decimal expected, params string[] skus)
+        {
+            //Act
+            skus.ToList().ForEach(x => _sut.Scan(x));
             var result = _sut.GetTotal();
 
             // Assert

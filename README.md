@@ -7,4 +7,5 @@ SKUQuantityOffer PriceA9931.30B1520.45The checkout accepts items scanne
 1. Check that when no items are scanned the total returned is 0.0.
 2. Check Ability to Scan Individual Items.
 3. Check Invalid Items are ignored.
+4. Check can scan multiple items without triggering a discount.
 
