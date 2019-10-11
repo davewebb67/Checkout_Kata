@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Checkout_Kata;
+using Checkout_Kata.Models;
 using Xunit;
 
 namespace Checkout_Kata_Tests
@@ -11,7 +13,14 @@ namespace Checkout_Kata_Tests
 
         public CheckoutTests()
         {
-            _sut = new Checkout();
+            IEnumerable<IItem> productList = new[]
+            {
+                new Item{Sku = "A99", Price = 0.5M},
+                new Item{Sku = "B15", Price = 0.3M},
+                new Item{Sku = "C40", Price = 0.6M}
+            };
+
+            _sut = new Checkout(productList);
         }
 
         [Fact]

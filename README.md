@@ -8,4 +8,5 @@ SKUQuantityOffer PriceA9931.30B1520.45The checkout accepts items scanne
 2. Check Ability to Scan Individual Items.
 3. Check Invalid Items are ignored.
 4. Check can scan multiple items without triggering a discount.
+5. Refactor to add Item and inject product list into checkout..
 

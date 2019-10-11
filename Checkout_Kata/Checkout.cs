@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Checkout_Kata.Models;
 
 namespace Checkout_Kata
 {
     public class Checkout : ICheckout
     {
-        private Dictionary<string, decimal> _productList;
+        private IEnumerable<IItem> _productList;
         private List<string> _purchasedProducts;
 
-        public Checkout()
+        public Checkout(IEnumerable<IItem> productList)
         {
-            _productList = new Dictionary<string, decimal>()
-            {
-                {"A99", 0.5M},
-                {"B15", 0.3M},
-                {"C40", 0.6M}
-            };
+            _productList = productList;
             _purchasedProducts = new List<string>();
         }
 
@@ -27,17 +23,14 @@ namespace Checkout_Kata
 
         private decimal GetPrice(string sku)
         {
-            if (string.IsNullOrEmpty(sku))
-            {
-                return 0M;
-            }
-            _productList.TryGetValue(sku, out decimal price);
+            var price = _productList.Single(x => x.Sku == sku).Price;
             return price;
         }
 
         public void Scan(string sku)
         {
-            _purchasedProducts.Add(sku);
+            if(_productList.Any(x=>x.Sku == sku))
+                _purchasedProducts.Add(sku);
         }
     }
 }
