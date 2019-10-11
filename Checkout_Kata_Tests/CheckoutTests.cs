@@ -39,5 +39,21 @@ namespace Checkout_Kata_Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        [InlineData("bla")]
+        public void Should_Ignore_An_Invalid_Sku(string sku)
+        {
+            // Arrange
+            var expected = 0M;
+            // Act
+            _sut.Scan(sku);
+            var result = _sut.GetTotal();
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
