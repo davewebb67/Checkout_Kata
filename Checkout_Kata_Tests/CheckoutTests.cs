@@ -80,5 +80,20 @@ namespace Checkout_Kata_Tests
             // Assert
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData(1.30, "A99", "A99", "A99")]
+        [InlineData(1.80, "A99", "A99", "A99", "A99")]
+        [InlineData(0.75, "B15", "B15", "B15")]
+        [InlineData(0.95, "B15", "A99", "B15")]
+        public void When_Multiple_Items_Are_Scanned_Which_Trigger_Special_Offers_Applied_Total_Should_Be_As_Expected(decimal expected, params string[] skus)
+        {
+            //Act
+            skus.ToList().ForEach(x => _sut.Scan(x));
+            var result = _sut.GetTotal();
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
