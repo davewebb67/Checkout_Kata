@@ -1,6 +1,6 @@
 ﻿namespace Checkout_Kata.Models
 {
-    internal class Discount : IDiscount
+    public class Discount : IDiscount
     {
         public string Sku { get; set; }
         public int Quantity { get; set; }

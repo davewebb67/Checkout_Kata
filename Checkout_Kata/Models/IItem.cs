@@ -1,5 +1,4 @@
-﻿
-namespace Checkout_Kata.Models
+﻿namespace Checkout_Kata.Models
 {
     public interface IItem
     {

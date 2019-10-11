@@ -20,7 +20,13 @@ namespace Checkout_Kata_Tests
                 new Item{Sku = "C40", Price = 0.6M}
             };
 
-            _sut = new Checkout(productList);
+            IEnumerable<IDiscount> discounts = new[]
+{
+                new Discount{ Sku="A99", Quantity = 3, AmountDiscounted = 0.2M},
+                new Discount{ Sku="B15", Quantity = 2, AmountDiscounted = 0.15M},
+            };
+
+            _sut = new Checkout(productList, discounts);
         }
 
         [Fact]
