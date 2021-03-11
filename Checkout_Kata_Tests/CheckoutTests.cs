@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Checkout_Kata;
@@ -21,7 +20,7 @@ namespace Checkout_Kata_Tests
             };
 
             IEnumerable<IDiscount> discounts = new[]
-{
+            {
                 new Discount{ Sku="A99", Quantity = 3, AmountDiscounted = 0.2M},
                 new Discount{ Sku="B15", Quantity = 2, AmountDiscounted = 0.15M},
             };
@@ -89,6 +88,7 @@ namespace Checkout_Kata_Tests
 
         [Theory]
         [InlineData(1.30, "A99", "A99", "A99")]
+        [InlineData(0.45, "B15","B15")]
         [InlineData(1.80, "A99", "A99", "A99", "A99")]
         [InlineData(0.75, "B15", "B15", "B15")]
         [InlineData(0.95, "B15", "A99", "B15")]
