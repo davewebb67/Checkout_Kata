@@ -6,9 +6,9 @@ namespace Checkout_Kata
 {
     public class Checkout : ICheckout
     {
-        private IEnumerable<IItem> _productList;
-        private List<string> _purchasedProducts;
-        private IEnumerable<IDiscount> _discounts;
+        private readonly IEnumerable<IItem> _productList;
+        private readonly List<string> _purchasedProducts;
+        private readonly IEnumerable<IDiscount> _discounts;
 
         public Checkout(IEnumerable<IItem> productList, IEnumerable<IDiscount> discounts)
         {
